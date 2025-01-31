@@ -11,7 +11,7 @@ function Signup() {
     function tryRegister(event) {
         event.preventDefault()
         if (senha === senhaConfirmacao) {
-            axios.get(`http://localhost:3000/register/${email}/${senha}`)
+            axios.get(`https://login-back-end-zeta.vercel.app/register/${email}/${senha}`)
             .then(() => {
                 setErro("")
                 window.open("/","_self")
