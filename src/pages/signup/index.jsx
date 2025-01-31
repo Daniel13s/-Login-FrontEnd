@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Input from "../../components/Input";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
     const [email, setEmail] = useState("")
@@ -8,13 +9,15 @@ function Signup() {
     const [senhaConfirmacao, setSenhaConfirmacao] = useState("")
     const [erro, setErro] = useState("")
 
+    const navigate = useNavigate()
+
     function tryRegister(event) {
         event.preventDefault()
         if (senha === senhaConfirmacao) {
             axios.get(`https://login-back-end-zeta.vercel.app/register/${email}/${senha}`)
             .then(() => {
                 setErro("")
-                window.open("/","_self")
+                navigate("/")
             })
             .catch(error => {
                 console.log(error)
@@ -37,9 +40,7 @@ function Signup() {
                     <label className="text-red-400">{erro}</label>
                     <input className="bg-[#CACFD6] text-white rounded-md p-4 text-2xl font-bold shadow-2xs" type="submit" onClick={tryRegister} value="Cadastrar" />
                 </form>
-                <p className="text-white">Já possui uma conta? <button onClick={() => {
-                    window.open("/", "_self")
-                }}><strong>Logar</strong></button></p>
+                <p className="text-white">Já possui uma conta? <strong><Link to="/">Logar</Link></strong></p>
             </div>
         </div>
     )

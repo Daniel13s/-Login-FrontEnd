@@ -1,19 +1,22 @@
 import { useState } from "react";
 import Input from "../../components/Input";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signin() {
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
     const [erro, setErro] = useState("")
 
+    const navigate = useNavigate()
+
     function tryLogin(event) {
         event.preventDefault()
         axios.get(`https://login-back-end-zeta.vercel.app/login/${email}/${senha}`)
         .then((response) => {
             setErro("")
-            window.open("/home","_self")
             console.log(response)
+            navigate("/home")
         })
         .catch(setErro("Email ou senha incorreto!"))
     }
@@ -30,7 +33,7 @@ function Signin() {
                     <label className="text-red-400">{erro}</label>
                     <input className="bg-[#CACFD6] text-white rounded-md p-4 text-2xl font-bold shadow-2xs" type="submit" value="Entrar" />
                 </form>
-                <p className="text-white">Não tem uma conta?<strong><Link to="/cadastro">Registre-se</Link></strong></p>
+                <p className="text-white">Não tem uma conta? <strong><Link to="/cadastro">Registre-se</Link></strong></p>
             </div>
         </div>
     )
