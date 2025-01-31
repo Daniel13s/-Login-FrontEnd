@@ -30,9 +30,7 @@ function Signin() {
                     <label className="text-red-400">{erro}</label>
                     <input className="bg-[#CACFD6] text-white rounded-md p-4 text-2xl font-bold shadow-2xs" type="submit" value="Entrar" />
                 </form>
-                <p className="text-white">Não tem uma conta? <button onClick={() => {
-                    window.open("/cadastro", "_self")
-                }}><strong>Registre-se</strong></button></p>
+                <p className="text-white">Não tem uma conta?<strong><Link to="/cadastro">Registre-se</Link></strong></p>
             </div>
         </div>
     )
