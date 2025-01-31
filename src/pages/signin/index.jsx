@@ -9,7 +9,7 @@ function Signin() {
 
     function tryLogin(event) {
         event.preventDefault()
-        axios.get(`http://localhost:3000/login/${email}/${senha}`)
+        axios.get(`https://login-back-end-zeta.vercel.app/login/${email}/${senha}`)
         .then((response) => {
             setErro("")
             window.open("/home","_self")
